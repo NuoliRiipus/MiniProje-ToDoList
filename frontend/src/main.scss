@@ -1,0 +1,24 @@
+// Renk Değişkenleri
+
+$enacikrenk: #f5cdaa;
+$acikrenk: #cfb495;
+$normalrenk: #758184;
+$koyurenk: #5d5b6a;
+$beyazacalanrenk: rgb(224, 224, 224);
+
+// Heryerde geçerli stiller
+html {
+    background: linear-gradient(to right top, $acikrenk, $enacikrenk)
+}
+
+html, body {
+    height: 100%;
+}
+
+.ortalanmis-kutu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}

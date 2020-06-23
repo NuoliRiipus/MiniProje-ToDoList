@@ -1,0 +1,58 @@
+<div class="ortalanmis-kutu">
+    <div class="ana-kutu">
+        <div class="liste-kutusu">
+            <h1 class="baslik">LİSTE</h1>
+            <div class="liste-menusu">
+                <a class="liste" *ngFor="let liste of listeler" [routerLink]="['',liste._id]" routerLinkActive="secili">
+                    <div class="liste-icerik">
+                        {{liste.baslik}}
+                    </div>
+                    <div class="liste-son">
+                        <a (click)="listeSil(liste._id)">X</a>
+                    </div>
+                </a>
+            </div>
+            <button #ListModule id="Liste" class="button" (click)="openModal(ListModule.id)">+ Yeni Liste</button>
+        </div>
+        <div class="yapilacaklar-kutusu">
+            <h1 class="baslik">YAPILACAKLAR</h1>
+            <div cdkDropList class="yapilacaklar-listesi" (cdkDropListDropped)="drop($event)">
+                <div class="yapilacak" *ngFor="let yapilacak of yapilacaklar" cdkDrag>
+                    <div class="yapilacak-icerik">
+                        <p>{{yapilacak.icerik}}</p>
+                    </div>
+                    <div class="yapilacak-son">
+                        <a style="font-size: 20px;color: brown;" (click)="yapilacakSil(yapilacak._id)">X</a>
+                    </div>
+                </div>
+            </div>
+            <button #YapModule id="Yap" class="button" (click)="openModal(YapModule.id)">+ Yapılacak Bir Görev Ekle</button>
+        </div>
+    </div>
+</div>
+<div class="modal" [class.is-active]="COL">
+    <div class="modal-background" (click)="closeModal()"></div>
+    <div class="modal-content">
+        <section class="modal-card-body">
+            <h1>Yeni Liste Ekle</h1>
+            <input class="input is-medium" type="text" placeholder="Liste adı girin..." [(ngModel)]="girdi">
+            <br><br>
+            <div class="buttons is-right">
+                <button class="button is-medium" (click)="listeEkle()" >Ekle</button>
+            </div>
+        </section>
+    </div>
+</div>
+<div class="modal" [class.is-active]="COY">
+    <div class="modal-background" (click)="closeModal()"></div>
+    <div class="modal-content">
+        <section class="modal-card-body">
+            <h1>Yeni Görev Ekle</h1>
+            <input class="input is-medium" type="text" placeholder="Bir görev girin..." [(ngModel)]="girdi">
+            <br><br>
+            <div class="buttons is-right">
+                <button class="button is-medium" (click)="yapilacakEkle()">Ekle</button>
+            </div>
+        </section>
+    </div>
+</div>
